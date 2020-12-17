@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,17 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/tasks', function () {
 
-    $tasks = [
-      'Посмотреть урок 2.',
-      'Осознать Всё.',
-      'Домашнее Задание',
-    ];
+    $tasks = DB::table('tasks')->get();
 
-    return view('welkome', compact('tasks'));
+    return view('tasks.index', compact('tasks'));
 });
 
-Route::get('/about', function () {
-    return view('about');
+Route::get('/tasks/{id}', function ($id) {
+
+    $task = DB::table('tasks')->find($id);
+
+    return view('tasks.show', compact('task'));
+});
+
+
+Route::get('/welcome', function () {
+    return view('welcome');
 });
