@@ -1,6 +1,6 @@
 <?php
 /**
- * @var array $name - массив входных параметров
+ * @var array $tasks  - массив входных параметров
  */
 ?>
 <!doctype html>
@@ -13,6 +13,10 @@
     <title>Skillbox laravel learning</title>
 </head>
 <body>
-    <h1>Hello <?=$name; ?>!</h1>
+    <ul>
+        @foreach ($tasks as $task)
+            <li>{{ $task }}</li>
+        @endforeach
+    </ul>
 </body>
 </html>

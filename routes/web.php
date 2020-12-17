@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $name = "Alex Yakovlev";
+    $tasks = [
+      'Посмотреть урок 2.',
+      'Осознать Всё.',
+      'Домашнее Задание',
+    ];
 
-    return view('welkome', compact('name'));
+    return view('welkome', compact('tasks'));
 });
 
 Route::get('/about', function () {
