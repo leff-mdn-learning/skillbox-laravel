@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Illuminate\View\View;
 
 class TasksController extends Controller
 {
@@ -10,5 +11,10 @@ class TasksController extends Controller
     {
         $tasks = Task::get();
         return view('tasks.index', compact('tasks'));
+    }
+
+    public function show(Task $task)
+    {
+        return view('tasks.show', compact('task'));
     }
 }

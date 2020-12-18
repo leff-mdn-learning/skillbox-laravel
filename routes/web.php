@@ -1,15 +1,12 @@
 <?php
 
-use App\Models\Task;
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/tasks', 'TasksController@index');
+Route::get('/tasks', [TasksController::class, 'index']);
+Route::get('/tasks/{task}', [TasksController::class, 'show']);
 
-Route::get('/tasks/{id}', function ($id) {
-    $task = Task::find($id);
-    return view('tasks.show', compact('task'));
-});
 
-Route::get('/welcome', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return view('welkome');
 });
